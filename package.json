@@ -1,0 +1,29 @@
+{
+  "name": "multipurpose_tabcontent",
+  "version": "1.6.0",
+  "author": "Bhavesh Medhekar <bhaveshmedhekar@gmail.com>",
+  "description": "jQuery plugin that provides responsive tab functionality. The tabs transform to an accordion when it reaches a CSS breakpoint. can be used with various options provided.",
+  "contributors": [
+    {
+      "name": "Bhavesh Medhekar",
+      "email": "bhaveshmedhekar@gmail.com"
+    }
+  ],
+  "main": "./js/jquery.multipurpose_tabcontent.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bhaveshcmedhekar/multipurpose_tabcontent.git"
+  },
+  "keywords": [
+    "jquery-plugin",
+    "responsive",
+    "tabs",
+    "accordian",
+    "jquery"
+  ],
+  "dependencies": {
+    "jquery": "1.7.2"
+  },
+  "license": "MIT",
+  "devDependencies": {}
+}

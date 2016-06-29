@@ -1,0 +1,10 @@
+{
+    "name": "multipurpose_tabcontent",
+    "main": "js/jquery.multipurpose_tabcontent.js",
+    "ignore": [
+        "**/*.txt"
+    ],
+    "dependencies": {
+        "jquery": ">=1.7.2"
+    }
+}
