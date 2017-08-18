@@ -1,7 +1,7 @@
 <h2 >
 Features</h2>
 
-<ul>
+<ul>  
             <li>Has option to show same structure in accordion </li>
             <li>Tabs transform to accordion based on breakpoint</li>
             <li>Has option for tab's different layout (tabs on top/left/right side)</li>
