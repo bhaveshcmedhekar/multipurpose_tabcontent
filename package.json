@@ -24,6 +24,5 @@
   "dependencies": {
     "jquery": "1.7.2"
   },
-  "license": "MIT",
-  "devDependencies": {}
+  "license": "MIT"
 }
