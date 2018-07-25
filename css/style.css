@@ -326,7 +326,7 @@ ul, li {
         display: block;
     }
     .tab_wrapper.show-as-dropdown>.tab_list {
-        /* display: none; */
+display: none; 
     }
     .tab_wrapper.show-as-dropdown>.tab_list li {
         display: block;
