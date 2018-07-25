@@ -10,9 +10,11 @@
                 selector: "tab_wrapper",
                 plugin_type: "tab",
                 side: "",
+                //responsive: "true",
                 active_tab: "1",
                 controllers: "false",
                 ajax: "false",
+                multiple_tabs: "false",
                 show_ajax_content_in_tab: "false",
                 content_path: "false"
             }
@@ -29,6 +31,8 @@
                 var side = obj.side;
                 var active_tab = obj.active_tab;
                 var controllers = obj.controllers;
+                //var responsive = obj.responsive;
+                var multiple_tabs = obj.multiple_tabs;
                 var ajax = obj.ajax;
                 var show_ajax_content_in_tab = obj.show_ajax_content_in_tab;
                 var content_path = obj.content_path;
@@ -43,6 +47,8 @@
                 if (side != "") {
                     parent.addClass(side + "_side");
                 }
+
+
 
                 if (controllers == "true") {
                     parent.addClass("withControls");
@@ -126,7 +132,20 @@
                 });
 
 
+                if (multiple_tabs == "true") {
+                    var get_parent = $(this).closest(".tab_wrapper");
+                    var active_tab_text = $(this).find(" >ul li:eq(0)").text();
+                    get_parent.addClass("show-as-dropdown");
+                    get_parent.prepend("<div class='active_tab'><span class='text'>" + active_tab_text + "</span><span class='arrow'></span></div>");
+                }
+
+                $(".active_tab").click(function() {
+                    $(this).next().stop(true, true).slideToggle();
+                });
+
                 // add relation attr to li and generate accordion header for mobile
+
+                //if (responsive == "true") {
                 tab_selector.each(function() {
                     var accordian_header = $(this).text();
                     var add_relation = "tab_" + li_rel;
@@ -143,6 +162,7 @@
 
                     li_rel++;
                 });
+                // }
 
 
                 // on click of accordion header slideUp/DlideDuwon respective content
@@ -175,6 +195,13 @@
                     tab_selector.removeClass("active");
                     $(this).addClass("active");
                     hide_controls(get_new_closest_parent);
+
+                    if (multiple_tabs == "true") {
+                        var selected_tab_text = $(this).text();
+                        $(".active_tab .text").text(selected_tab_text);
+                        $(this).closest(".tab_list").slideUp();
+
+                    }
                 });
 
             });
