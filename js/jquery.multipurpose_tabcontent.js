@@ -195,12 +195,14 @@
                     tab_selector.removeClass("active");
                     $(this).addClass("active");
                     hide_controls(get_new_closest_parent);
+                    var winWidth = $(window).width();
 
                     if (multiple_tabs == "true") {
-                        var selected_tab_text = $(this).text();
-                        $(".active_tab .text").text(selected_tab_text);
-                        $(this).closest(".tab_list").slideUp();
-
+                        if (winWidth <= 768) {
+                            var selected_tab_text = $(this).text();
+                            $(".active_tab .text").text(selected_tab_text);
+                            $(this).closest(".tab_list").slideUp();
+                        }
                     }
                 });
 
