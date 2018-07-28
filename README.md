@@ -1,4 +1,12 @@
 <h2 >
+New Features</h2>
+
+  <ul>
+                    <li>can be use for Multiple Tabs (Tabs inside tabs) </li>
+                    <li>If there are multiple tabs, <strong>first tab list canbe converted into dropdown</strong> </li>
+                </ul>
+                
+<h2 >
 Features</h2>
 
 <ul>  
@@ -169,3 +177,13 @@ If option 'ajax' is true then, 'content_path' will show content in specified tab
 default: 'false'
 options: 'file path'
 </pre>
+
+
+                        <h5>multiple_tabs</h5>
+                      If true, First tablist can be converted into dropdown
+                        <pre>
+                           default: 'false'
+                            options: boolean (true / false)
+                        </pre>
+                  
+
