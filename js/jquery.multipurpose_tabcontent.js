@@ -159,7 +159,6 @@
                             get_parent.find(" > div > div.tab_content." + add_relation).before("<div title='" + add_relation + "' class='accordian_header " + add_relation + ' ' + current_tab_class + "'>" + accordian_header + "<span class='arrow'></span></div>");
                         }
                     });
-
                     li_rel++;
                 });
                 // }
@@ -187,7 +186,9 @@
                 tab_selector.click(function() {
                     var clicked_tab = $(this).attr("rel");
                     var get_new_closest_parent = $(this).closest(".tab_wrapper");
-                    get_new_closest_parent.find(".accordian_header").removeClass("active");
+                    var get_closest_tab_list = $(this).closest(".tab_list");
+                    get_closest_tab_list.next(".content_wrapper").find(" >.accordian_header").removeClass("active");
+                    //get_new_closest_parent.find(".accordian_header").removeClass("active");
                     get_new_closest_parent.find(".accordian_header." + clicked_tab).addClass("active");
 
                     tab_content_selector.removeClass("active").hide();
@@ -198,10 +199,12 @@
                     var winWidth = $(window).width();
 
                     if (multiple_tabs == "true") {
-                        if (winWidth <= 768) {
+                        if ($(this).parent(".tab_list").parent(".show-as-dropdown")) {
                             var selected_tab_text = $(this).text();
                             $(".active_tab .text").text(selected_tab_text);
-                            $(this).closest(".tab_list").slideUp();
+                        }
+                        if (winWidth <= 768) {
+                            $(this).closest(".tab_list").stop(true, true).slideUp();
                         }
                     }
                 });
