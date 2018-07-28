@@ -178,12 +178,12 @@ default: 'false'
 options: 'file path'
 </pre>
 
-
-                        <h5>multiple_tabs</h5>
-                      If true, First tablist can be converted into dropdown
-                        <pre>
-                           default: 'false'
-                            options: boolean (true / false)
-                        </pre>
+<h5>multiple_tabs</h5>
+If true, First tablist can be converted into dropdown
+<pre>
+default: 'false'
+options: boolean (true / false)
+</pre>
+                        
                   
 
