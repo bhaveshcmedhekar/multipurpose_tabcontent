@@ -1,5 +1,5 @@
 <h2 >
-New Features</h2>
+New Features Added</h2>
 
   <ul>
                     <li>can be use for Multiple Tabs (Tabs inside tabs) </li>
