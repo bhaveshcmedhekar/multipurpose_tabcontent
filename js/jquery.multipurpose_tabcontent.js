@@ -1,5 +1,6 @@
 (function($) {
     //Attach this new method to jQuery
+
     $.fn.extend({
 
         //This is where you write your plugin's name
@@ -47,8 +48,6 @@
                 if (side != "") {
                     parent.addClass(side + "_side");
                 }
-
-
 
                 if (controllers == "true") {
                     parent.addClass("withControls");
@@ -125,7 +124,9 @@
 
                 // add class to content div
                 tab_content_selector.each(function() {
-                    var add_relation = "tab_" + div_rel;
+                    var tab_count = $(this).parents(".tab_wrapper").length;
+                    var add_relation = "tab_" + tab_count + "_" + div_rel;
+                    //var add_relation = "tab_" + div_rel;
                     $(this).addClass(add_relation);
                     $(this).attr("title", add_relation);
                     div_rel++;
@@ -140,6 +141,7 @@
                 }
 
                 $(".active_tab").click(function() {
+
                     $(this).next().stop(true, true).slideToggle();
                 });
 
@@ -147,8 +149,11 @@
 
                 //if (responsive == "true") {
                 tab_selector.each(function() {
+                    var tab_count = $(this).parents(".tab_wrapper").length;
+                    var add_relation = "tab_" + tab_count + "_" + li_rel;
+
                     var accordian_header = $(this).text();
-                    var add_relation = "tab_" + li_rel;
+                    //var add_relation = "tab_" + li_rel;
                     var get_parent = $(this).closest(".tab_wrapper");
                     $(this).attr("rel", add_relation);
 
@@ -164,7 +169,7 @@
                 // }
 
 
-                // on click of accordion header slideUp/DlideDuwon respective content
+                // on click of accordion header slideUp/SlideDown respective content
                 $(".accordian_header").click(function() {
                     var clicked_header = $(this).attr("title");
                     var content_status = $(this).next(".tab_content").css("display");
@@ -173,22 +178,27 @@
                     if (content_status == "none") {
                         get_closest_parent.find(">.content_wrapper >.accordian_header").removeClass("active");
                         $(this).addClass("active");
-
                         get_closest_parent.find(">ul >li").removeClass("active");
                         get_closest_parent.find(">ul >li[rel='" + clicked_header + "']").addClass("active");
 
-                        tab_content_selector.removeClass("active").slideUp();
-                        get_closest_parent.find(" > div > div.tab_content." + clicked_header).addClass("active").slideDown();
+                        tab_content_selector.removeClass("active").stop(true, true).slideUp();
+                        get_closest_parent.find(" > div > div.tab_content." + clicked_header).addClass("active").stop(true, true).slideDown();
+                    } else {
+                        get_closest_parent.find(">.content_wrapper >.accordian_header").removeClass("active");
+                        $(this).removeClass("active");
+                        get_closest_parent.find(">ul >li").removeClass("active");
+                        get_closest_parent.find(" > div > div.tab_content." + clicked_header).removeClass("active").stop(true, true).slideUp();
                     }
                 });
 
                 // on click of tab hide/show respective content
                 tab_selector.click(function() {
+
                     var clicked_tab = $(this).attr("rel");
                     var get_new_closest_parent = $(this).closest(".tab_wrapper");
                     var get_closest_tab_list = $(this).closest(".tab_list");
                     get_closest_tab_list.next(".content_wrapper").find(" >.accordian_header").removeClass("active");
-                    //get_new_closest_parent.find(".accordian_header").removeClass("active");
+
                     get_new_closest_parent.find(".accordian_header." + clicked_tab).addClass("active");
 
                     tab_content_selector.removeClass("active").hide();
@@ -204,6 +214,7 @@
                             $(".active_tab .text").text(selected_tab_text);
                         }
                         if (winWidth <= 768) {
+
                             $(this).closest(".tab_list").stop(true, true).slideUp();
                         }
                     }
