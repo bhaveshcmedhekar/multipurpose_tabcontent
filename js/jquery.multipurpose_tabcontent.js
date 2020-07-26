@@ -128,7 +128,7 @@
                     var add_relation = "tab_" + tab_count + "_" + div_rel;
                     //var add_relation = "tab_" + div_rel;
                     $(this).addClass(add_relation);
-                    $(this).attr("title", add_relation);
+                    $(this).data("title", add_relation);
                     div_rel++;
                 });
 
@@ -161,7 +161,7 @@
 
                     tab_content_selector.each(function() {
                         if ($(this).hasClass(add_relation)) {
-                            get_parent.find(" > div > div.tab_content." + add_relation).before("<div title='" + add_relation + "' class='accordian_header " + add_relation + ' ' + current_tab_class + "'>" + accordian_header + "<span class='arrow'></span></div>");
+                            get_parent.find(" > div > div.tab_content." + add_relation).before("<div data-title='" + add_relation + "' class='accordian_header " + add_relation + ' ' + current_tab_class + "'>" + accordian_header + "<span class='arrow'></span></div>");
                         }
                     });
                     li_rel++;
@@ -171,7 +171,7 @@
 
                 // on click of accordion header slideUp/SlideDown respective content
                 $(".accordian_header").click(function() {
-                    var clicked_header = $(this).attr("title");
+                    var clicked_header = $(this).data("title");
                     var content_status = $(this).next(".tab_content").css("display");
                     var get_closest_parent = $(this).closest(".tab_wrapper");
 
